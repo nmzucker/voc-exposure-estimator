@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const EMISSION_RATE = 0.5; // mg/hr per printer (typical PLA estimate)
+const EMISSION_FACTOR = 835; // µg/hr per printer
 
 const PartThree = () => {
   const [volume, setVolume] = useState("");
@@ -9,7 +9,7 @@ const PartThree = () => {
 
   const canCalc = Number(volume) > 0 && Number(printers) > 0 && Number(ach) > 0;
   const concentration = canCalc
-    ? (EMISSION_RATE * Number(printers)) / (Number(volume) * Number(ach))
+    ? (Number(printers) * EMISSION_FACTOR) / (Number(volume) * Number(ach))
     : null;
 
   return (
@@ -25,7 +25,7 @@ const PartThree = () => {
           <strong>Inputs:</strong> room volume (m³), number of printers, and air exchange rate (ACH).{" "}
           <strong>Output:</strong> estimated VOC concentration in mg/m³.{" "}
           <strong>Interpretation:</strong> compare the result against occupational exposure limits (e.g., OSHA PEL or WHO guidelines) to assess whether ventilation is adequate.
-          The assumed emission rate is {EMISSION_RATE} mg/hr per printer (typical PLA).
+          The assumed emission factor is {EMISSION_FACTOR} µg/hr per printer (typical PLA).
         </p>
       </div>
 
