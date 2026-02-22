@@ -16,7 +16,7 @@ const PartThree = () => {
     <section className="section-container border-b border-border">
       <h2 className="section-title">Part 3: VOC Concentration Estimator</h2>
       <p className="section-subtitle">
-        This tool estimates steady-state total VOC concentration in an indoor space with 3D printers using C = (E × N) / (V × ACH).
+        This tool estimates steady-state total VOC concentration in an indoor space with 3D printers using C = (E × N) / (V × ACH). Where E, the emission rate is set to 835 µg/hr according to literature reviewed by "https://heatforge3d.com/en/pages/3d-printer-voc-calculator".
       </p>
 
       <div className="rounded-xl border border-border bg-card p-6 mb-6">
