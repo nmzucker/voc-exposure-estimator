@@ -3,6 +3,7 @@ const nodes = [
   { id: "input2", label: "# of Printers", x: 30, y: 100, type: "input" },
   { id: "input3", label: "Air Exchange Rate (ACH)", x: 30, y: 170, type: "input" },
   { id: "assume1", label: "Emission Rate per Printer", x: 30, y: 250, type: "assumption" },
+  { id: "assume2", label: "ABS Material Used", x: 30, y: 320, type: "assumption" },
   { id: "process", label: "Steady-State VOC Calculation\nC = (E × N) / (V × ACH)", x: 260, y: 100, type: "process" },
   { id: "output", label: "VOC Concentration (µg/m³)", x: 480, y: 100, type: "output" },
   { id: "uncertain", label: "Uncertainty: real emission\nrates vary by model,\nfilament, & temperature", x: 260, y: 250, type: "uncertainty" },
@@ -32,7 +33,7 @@ const PartTwo = () => (
     </p>
 
     <div className="overflow-x-auto">
-      <svg viewBox="0 0 620 320" className="w-full mx-auto" style={{ maxWidth: 700 }}>
+      <svg viewBox="0 0 620 390" className="w-full mx-auto" style={{ maxWidth: 700 }}>
         <defs>
           <marker id="arrowhead" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
             <polygon points="0 0, 8 3, 0 6" fill="hsl(220,15%,50%)" />
@@ -73,7 +74,7 @@ const PartTwo = () => (
         ].map((item, i) => {
           const c = colorMap[item.type];
           return (
-            <g key={item.type} transform={`translate(${10 + i * 120}, 300)`}>
+            <g key={item.type} transform={`translate(${10 + i * 120}, 370)`}>
               <rect width={10} height={10} rx={3} fill={c.bg} stroke={c.border} strokeWidth={1} />
               <text x={14} y={10} fontSize={9} fill="hsl(220,10%,40%)" fontFamily="Inter, sans-serif">
                 {item.label}
