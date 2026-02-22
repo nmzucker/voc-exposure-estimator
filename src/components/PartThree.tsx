@@ -21,11 +21,7 @@ const PartThree = () => {
 
       <div className="rounded-xl border border-border bg-card p-6 mb-6">
         <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
-          <strong>What does the tool do?</strong> It estimates the steady-state airborne VOC concentration in a room with one or more 3D printers.{" "}
-          <strong>Inputs:</strong> room volume (m³), number of printers, and air exchange rate (ACH).{" "}
-          <strong>Output:</strong> estimated VOC concentration in µg/m³.{" "}
-          <strong>Interpretation:</strong> compare the result against occupational exposure limits (e.g., OSHA PEL or WHO guidelines) to assess whether ventilation is adequate.
-          The assumed emission factor is {EMISSION_FACTOR} µg/hr per printer (typical PLA).
+          This tool estimates the total VOC concentration in a room based on the room volume, number of printers, and by the air exchange rate while assuming a steady state environment. The final output will be the total VOC concentration in micrograms per meter cubed. Once a final output is produced, this value can be compared against existing occupational exposure limits in order to determine if room changes are necessary. This tool can also be utilized to determine how changes in the inputs correspond to changes in a final VOC concentration which can assist with decision making for future improvements.
         </p>
       </div>
 
