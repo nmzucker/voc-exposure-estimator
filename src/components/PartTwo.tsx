@@ -1,19 +1,19 @@
 const nodes = [
-  { id: "input1", label: "Room Volume (m³)", x: 60, y: 40, type: "input" },
-  { id: "input2", label: "# of Printers", x: 60, y: 120, type: "input" },
-  { id: "input3", label: "Air Exchange Rate (ACH)", x: 60, y: 200, type: "input" },
-  { id: "assume1", label: "Emission Rate per Printer", x: 60, y: 290, type: "assumption" },
-  { id: "process", label: "Steady-State VOC Calculation\nC = (E × N) / (V × ACH)", x: 340, y: 130, type: "process" },
-  { id: "output", label: "VOC Concentration (mg/m³)", x: 600, y: 130, type: "output" },
-  { id: "uncertain", label: "Uncertainty: real emission\nrates vary by model,\nfilament, & temperature", x: 340, y: 290, type: "uncertainty" },
+  { id: "input1", label: "Room Volume (m³)", x: 30, y: 30, type: "input" },
+  { id: "input2", label: "# of Printers", x: 30, y: 100, type: "input" },
+  { id: "input3", label: "Air Exchange Rate (ACH)", x: 30, y: 170, type: "input" },
+  { id: "assume1", label: "Emission Rate per Printer", x: 30, y: 250, type: "assumption" },
+  { id: "process", label: "Steady-State VOC Calculation\nC = (E × N) / (V × ACH)", x: 260, y: 100, type: "process" },
+  { id: "output", label: "VOC Concentration (µg/m³)", x: 480, y: 100, type: "output" },
+  { id: "uncertain", label: "Uncertainty: real emission\nrates vary by model,\nfilament, & temperature", x: 260, y: 250, type: "uncertainty" },
 ];
 
 const arrows = [
-  { from: "input1", to: "process", x1: 180, y1: 55, x2: 270, y2: 130 },
-  { from: "input2", to: "process", x1: 180, y1: 135, x2: 270, y2: 145 },
-  { from: "input3", to: "process", x1: 180, y1: 215, x2: 270, y2: 160 },
-  { from: "assume1", to: "process", x1: 180, y1: 300, x2: 270, y2: 175 },
-  { from: "process", to: "output", x1: 480, y1: 145, x2: 540, y2: 145 },
+  { from: "input1", to: "process", x1: 160, y1: 50, x2: 255, y2: 115 },
+  { from: "input2", to: "process", x1: 160, y1: 120, x2: 255, y2: 125 },
+  { from: "input3", to: "process", x1: 160, y1: 190, x2: 255, y2: 140 },
+  { from: "assume1", to: "process", x1: 160, y1: 265, x2: 255, y2: 155 },
+  { from: "process", to: "output", x1: 440, y1: 125, x2: 475, y2: 125 },
 ];
 
 const colorMap: Record<string, { bg: string; border: string; text: string }> = {
@@ -32,7 +32,7 @@ const PartTwo = () => (
     </p>
 
     <div className="overflow-x-auto">
-      <svg viewBox="0 0 740 360" className="w-full max-w-3xl mx-auto" style={{ minWidth: 500 }}>
+      <svg viewBox="0 0 620 320" className="w-full mx-auto" style={{ maxWidth: 700 }}>
         <defs>
           <marker id="arrowhead" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
             <polygon points="0 0, 8 3, 0 6" fill="hsl(220,15%,50%)" />
@@ -47,15 +47,15 @@ const PartTwo = () => (
         {nodes.map((n) => {
           const c = colorMap[n.type];
           const lines = n.label.split("\n");
-          const boxW = n.type === "process" || n.type === "uncertainty" ? 200 : 160;
-          const boxH = lines.length > 1 ? 20 + lines.length * 18 : 40;
+          const boxW = n.type === "process" || n.type === "uncertainty" ? 180 : 130;
+          const boxH = lines.length > 1 ? 18 + lines.length * 16 : 36;
           return (
             <g key={n.id}>
               <rect x={n.x} y={n.y} width={boxW} height={boxH} rx={8}
                 fill={c.bg} stroke={c.border} strokeWidth={1.5} />
               {lines.map((line, li) => (
-                <text key={li} x={n.x + boxW / 2} y={n.y + 18 + li * 18}
-                  textAnchor="middle" fill={c.text} fontSize={11} fontFamily="Inter, sans-serif">
+                <text key={li} x={n.x + boxW / 2} y={n.y + 16 + li * 16}
+                  textAnchor="middle" fill={c.text} fontSize={10} fontFamily="Inter, sans-serif">
                   {line}
                 </text>
               ))}
@@ -73,9 +73,9 @@ const PartTwo = () => (
         ].map((item, i) => {
           const c = colorMap[item.type];
           return (
-            <g key={item.type} transform={`translate(${20 + i * 140}, 340)`}>
-              <rect width={12} height={12} rx={3} fill={c.bg} stroke={c.border} strokeWidth={1} />
-              <text x={18} y={11} fontSize={10} fill="hsl(220,10%,40%)" fontFamily="Inter, sans-serif">
+            <g key={item.type} transform={`translate(${10 + i * 120}, 300)`}>
+              <rect width={10} height={10} rx={3} fill={c.bg} stroke={c.border} strokeWidth={1} />
+              <text x={14} y={10} fontSize={9} fill="hsl(220,10%,40%)" fontFamily="Inter, sans-serif">
                 {item.label}
               </text>
             </g>
