@@ -1,20 +1,14 @@
-import { useState } from "react";
+const REFLECTION_TEXT = "Enter your reflection here by editing this variable in src/components/PartFour.tsx";
 
 const PartFour = () => {
-  const [text, setText] = useState("");
-
   return (
     <section className="section-container">
       <h2 className="section-title">Part 4: Reflection</h2>
-      <p className="section-subtitle">Write your reflection on the process, challenges, and insights below.</p>
+      <p className="section-subtitle">Process, challenges, and insights.</p>
 
-      <textarea
-        value={text}
-        onChange={(e) => setText(e.target.value)}
-        placeholder="Enter your reflection here..."
-        rows={10}
-        className="input-field resize-y"
-      />
+      <div className="rounded-xl border border-border bg-card p-6">
+        <p className="text-foreground leading-relaxed whitespace-pre-wrap">{REFLECTION_TEXT}</p>
+      </div>
     </section>
   );
 };
