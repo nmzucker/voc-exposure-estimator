@@ -23,7 +23,7 @@ const PartThree = () => {
         <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
           <strong>What does the tool do?</strong> It estimates the steady-state airborne VOC concentration in a room with one or more 3D printers.{" "}
           <strong>Inputs:</strong> room volume (m³), number of printers, and air exchange rate (ACH).{" "}
-          <strong>Output:</strong> estimated VOC concentration in mg/m³.{" "}
+          <strong>Output:</strong> estimated VOC concentration in µg/m³.{" "}
           <strong>Interpretation:</strong> compare the result against occupational exposure limits (e.g., OSHA PEL or WHO guidelines) to assess whether ventilation is adequate.
           The assumed emission factor is {EMISSION_FACTOR} µg/hr per printer (typical PLA).
         </p>
@@ -71,7 +71,7 @@ const PartThree = () => {
           <>
             <p className="text-sm text-muted-foreground mb-1">Estimated Steady-State VOC Concentration</p>
             <p className="text-4xl font-bold text-primary" style={{ fontFamily: "var(--font-heading)" }}>
-              {concentration.toFixed(4)} <span className="text-lg font-normal text-muted-foreground">mg/m³</span>
+              {concentration.toFixed(2)} <span className="text-lg font-normal text-muted-foreground">µg/m³</span>
             </p>
           </>
         ) : (
