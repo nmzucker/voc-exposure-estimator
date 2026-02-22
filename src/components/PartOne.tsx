@@ -1,44 +1,26 @@
-import { useState } from "react";
+const PART_ONE_IMAGE = ""; // Replace with your image path, e.g. "/images/my-photo.png"
+const PART_ONE_TEXT = "Enter your Part 1 text here by editing this variable in src/components/PartOne.tsx";
 
 const PartOne = () => {
-  const [text, setText] = useState("");
-  const [image, setImage] = useState<string | null>(null);
-
-  const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => setImage(reader.result as string);
-      reader.readAsDataURL(file);
-    }
-  };
-
   return (
     <section className="section-container border-b border-border">
       <h2 className="section-title">Part 1</h2>
-      <p className="section-subtitle">Upload an image and add your description below.</p>
+      <p className="section-subtitle">Overview and context.</p>
 
-      <div className="mb-6">
-        <label className="block text-sm font-medium text-muted-foreground mb-2">Image</label>
-        <label className="flex items-center justify-center w-full h-64 rounded-xl border-2 border-dashed border-input bg-card hover:border-primary/50 cursor-pointer transition-colors overflow-hidden">
-          {image ? (
-            <img src={image} alt="Uploaded" className="w-full h-full object-contain" />
-          ) : (
-            <span className="text-muted-foreground text-sm">Click to upload an image</span>
-          )}
-          <input type="file" accept="image/*" onChange={handleImageUpload} className="hidden" />
-        </label>
-      </div>
+      {PART_ONE_IMAGE && (
+        <div className="mb-6 rounded-xl border border-border overflow-hidden bg-card">
+          <img src={PART_ONE_IMAGE} alt="Part 1" className="w-full h-auto object-contain max-h-96" />
+        </div>
+      )}
 
-      <div>
-        <label className="block text-sm font-medium text-muted-foreground mb-2">Description</label>
-        <textarea
-          value={text}
-          onChange={(e) => setText(e.target.value)}
-          placeholder="Enter your text here..."
-          rows={6}
-          className="input-field resize-y"
-        />
+      {!PART_ONE_IMAGE && (
+        <div className="mb-6 flex items-center justify-center h-64 rounded-xl border-2 border-dashed border-input bg-card">
+          <span className="text-muted-foreground text-sm">Set PART_ONE_IMAGE in PartOne.tsx to display an image</span>
+        </div>
+      )}
+
+      <div className="rounded-xl border border-border bg-card p-6">
+        <p className="text-foreground leading-relaxed whitespace-pre-wrap">{PART_ONE_TEXT}</p>
       </div>
     </section>
   );
