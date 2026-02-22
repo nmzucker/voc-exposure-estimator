@@ -1,5 +1,5 @@
 const PART_ONE_IMAGE = ""; // Replace with your image path, e.g. "/images/my-photo.png"
-const PART_ONE_TEXT = "Enter your Part 1 text here by editing this variable in src/components/PartOne.tsx";
+const PART_ONE_TEXT = "Test_1";
 
 const PartOne = () => {
   return (
